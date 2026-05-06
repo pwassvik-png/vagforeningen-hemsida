@@ -164,18 +164,6 @@ create policy "Admin/styrelse kan hantera möten"
   to authenticated
   using (exists (select 1 from profiles where id = auth.uid() and role in ('admin', 'styrelse')));
 
--- === UNDERHÅLLSPLAN ===
-create table maintenance_items (
-  id uuid primary key default gen_random_uuid(),
-  title text not null,
-  description text not null,
-  year integer not null,
-  estimated_cost numeric(10,2),
-  status text not null default 'planned' check (status in ('planned', 'in_progress', 'completed', 'deferred')),
-  contractor_id uuid references contractors(id),
-  created_at timestamptz not null default now()
-);
-
 -- === ENTREPRENÖRER ===
 create table contractors (
   id uuid primary key default gen_random_uuid(),
@@ -185,6 +173,18 @@ create table contractors (
   phone text not null,
   specialties text,
   notes text,
+  created_at timestamptz not null default now()
+);
+
+-- === UNDERHÅLLSPLAN ===
+create table maintenance_items (
+  id uuid primary key default gen_random_uuid(),
+  title text not null,
+  description text not null,
+  year integer not null,
+  estimated_cost numeric(10,2),
+  status text not null default 'planned' check (status in ('planned', 'in_progress', 'completed', 'deferred')),
+  contractor_id uuid references contractors(id),
   created_at timestamptz not null default now()
 );
 
