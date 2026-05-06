@@ -35,20 +35,8 @@ export interface Post {
 }
 
 // === Problemrapport ===
-export enum IssueCategory {
-  ROAD_DAMAGE = "Hål i vägen",
-  VEGETATION = "Träd/Vegetation",
-  SNOW_PLOWING = "Snöröjning",
-  LIGHTING = "Belysning",
-  DRAINAGE = "Dikning/Avrinning",
-  OTHER = "Övrigt",
-}
-
-export enum IssueStatus {
-  RECEIVED = "Mottagen",
-  IN_PROGRESS = "Pågående",
-  RESOLVED = "Åtgärdad",
-}
+export type IssueCategory = "Hål i vägen" | "Träd/Vegetation" | "Snöröjning" | "Belysning" | "Dikning/Avrinning" | "Övrigt";
+export type IssueStatus = "Mottagen" | "Pågående" | "Åtgärdad";
 
 export interface Issue {
   id: string;

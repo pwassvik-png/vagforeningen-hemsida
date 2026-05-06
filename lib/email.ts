@@ -1,6 +1,10 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const getResend = () => {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) return null;
+  return new Resend(key);
+};
 
 interface SendEmailParams {
   to: string | string[];
@@ -15,7 +19,8 @@ export async function sendEmail({
   html,
   from = "Skogstorp-Gunntorp <no-reply@skogstorp-gunntorp.se>",
 }: SendEmailParams) {
-  if (!process.env.RESEND_API_KEY) {
+  const resend = getResend();
+  if (!resend) {
     console.warn("RESEND_API_KEY not set — skipping email");
     return { id: "skipped" };
   }
