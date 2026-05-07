@@ -85,47 +85,47 @@ export default function DocumentsPage() {
     docs: docs.filter((d) => d.category === cat.value),
   })).filter((g) => g.docs.length > 0);
 
-  if (loading) return <div className="text-[var(--color-on-surface-variant)] py-8 text-center">Laddar...</div>;
+  if (loading) return <div className="text-on-surface-variant py-8 text-center">Laddar...</div>;
 
   return (
     <div>
       <div className="flex items-center justify-between mb-6 sm:mb-8">
         <div className="flex items-center gap-2.5">
-          <div className="w-10 h-10 rounded-xl bg-[var(--color-secondary)]/10 flex items-center justify-center">
-            <FileText size={20} className="text-[var(--color-secondary)]" />
+          <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center">
+            <FileText size={20} className="text-secondary" />
           </div>
           <h1 className="text-2xl sm:text-3xl font-semibold">Dokument</h1>
         </div>
         {canUpload && (
-          <button onClick={() => setShowForm(true)} className="bg-[var(--color-secondary)] text-white px-4 py-2.5 rounded-[10px] flex items-center gap-2 hover:brightness-110 transition text-sm font-semibold">
+          <button onClick={() => setShowForm(true)} className="bg-secondary text-white px-4 py-2.5 rounded-[10px] flex items-center gap-2 hover:brightness-110 transition text-sm font-semibold">
             <Plus size={16} /> Ladda upp
           </button>
         )}
       </div>
 
       {showForm && (
-        <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-5 sm:p-6 border border-[var(--color-outline-variant)] shadow-sm mb-6 space-y-4">
+        <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-5 sm:p-6 border border-outline-variant shadow-sm mb-6 space-y-4">
           <div className="flex justify-between items-center">
             <h2 className="text-lg font-semibold">Ladda upp dokument</h2>
-            <button type="button" onClick={() => setShowForm(false)} className="text-[var(--color-on-surface-variant)] hover:text-[var(--color-on-surface)] transition"><X size={20} /></button>
+            <button type="button" onClick={() => setShowForm(false)} className="text-on-surface-variant hover:text-on-surface transition"><X size={20} /></button>
           </div>
-          <input type="text" placeholder="Titel" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required className="w-full px-4 py-3 border border-[var(--color-outline-variant)] rounded-[10px] bg-[var(--color-surface)] text-[var(--color-on-surface)] focus:ring-2 focus:ring-[var(--color-secondary)] focus:border-transparent outline-none transition" />
-          <select value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value as DocumentType })} className="w-full px-4 py-3 border border-[var(--color-outline-variant)] rounded-[10px] bg-[var(--color-surface)] text-[var(--color-on-surface)] focus:ring-2 focus:ring-[var(--color-secondary)] focus:border-transparent outline-none transition">
+          <input type="text" placeholder="Titel" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required className="w-full px-4 py-3 border border-outline-variant rounded-[10px] bg-surface text-on-surface focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition" />
+          <select value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value as DocumentType })} className="w-full px-4 py-3 border border-outline-variant rounded-[10px] bg-surface text-on-surface focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition">
             {CATEGORIES.map((c) => <option key={c.value} value={c.value}>{c.icon} {c.label}</option>)}
           </select>
-          <input ref={fileRef} type="file" onChange={(e) => setForm({ ...form, file: e.target.files?.[0] || null })} required className="w-full text-sm text-[var(--color-on-surface-variant)] file:mr-4 file:py-2.5 file:px-4 file:rounded-[10px] file:border-0 file:text-sm file:font-semibold file:bg-[var(--color-secondary)]/10 file:text-[var(--color-secondary)] hover:file:bg-[var(--color-secondary)]/20" />
-          <label className="flex items-center gap-2 text-sm text-[var(--color-on-surface-variant)]">
+          <input ref={fileRef} type="file" onChange={(e) => setForm({ ...form, file: e.target.files?.[0] || null })} required className="w-full text-sm text-on-surface-variant file:mr-4 file:py-2.5 file:px-4 file:rounded-[10px] file:border-0 file:text-sm file:font-semibold file:bg-secondary/10 file:text-secondary hover:file:bg-secondary/20" />
+          <label className="flex items-center gap-2 text-sm text-on-surface-variant">
             <input type="checkbox" checked={form.is_public} onChange={(e) => setForm({ ...form, is_public: e.target.checked })} className="rounded" />
             Offentlig (synlig för alla medlemmar)
           </label>
-          <button type="submit" disabled={uploading} className="bg-[var(--color-secondary)] text-white px-6 py-2.5 rounded-[10px] hover:brightness-110 transition font-semibold disabled:opacity-50">
+          <button type="submit" disabled={uploading} className="bg-secondary text-white px-6 py-2.5 rounded-[10px] hover:brightness-110 transition font-semibold disabled:opacity-50">
             {uploading ? "Laddar upp..." : "Ladda upp"}
           </button>
         </form>
       )}
 
       {grouped.length === 0 && (
-        <div className="bg-white rounded-2xl p-8 border border-[var(--color-outline-variant)] shadow-sm text-center text-[var(--color-on-surface-variant)]">
+        <div className="bg-white rounded-2xl p-8 border border-outline-variant shadow-sm text-center text-on-surface-variant">
           Inga dokument ännu.
         </div>
       )}
@@ -133,27 +133,27 @@ export default function DocumentsPage() {
         <div key={group.value} className="mb-6">
           <div className="flex items-center gap-2 mb-3">
             <span className="text-lg">{group.icon}</span>
-            <h2 className="text-lg font-semibold text-[var(--color-on-surface)]">{group.label}</h2>
-            <span className="text-xs text-[var(--color-on-surface-variant)] bg-[var(--color-surface-container)] px-2 py-0.5 rounded-full">{group.docs.length}</span>
+            <h2 className="text-lg font-semibold text-on-surface">{group.label}</h2>
+            <span className="text-xs text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-full">{group.docs.length}</span>
           </div>
           <div className="space-y-2">
             {group.docs.map((doc) => (
-              <div key={doc.id} className="bg-white rounded-2xl p-4 border border-[var(--color-outline-variant)] shadow-sm flex items-center justify-between gap-3 hover:shadow-md transition">
+              <div key={doc.id} className="bg-white rounded-2xl p-4 border border-outline-variant shadow-sm flex items-center justify-between gap-3 hover:shadow-md transition">
                 <div className="flex items-center gap-3 min-w-0">
-                  <div className="w-10 h-10 rounded-xl bg-[var(--color-surface-container)] flex items-center justify-center shrink-0">
-                    <FileText size={18} className="text-[var(--color-secondary)]" />
+                  <div className="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center shrink-0">
+                    <FileText size={18} className="text-secondary" />
                   </div>
                   <div className="min-w-0">
-                    <a href={doc.file_url} target="_blank" rel="noopener noreferrer" className="font-semibold text-[var(--color-on-surface)] hover:text-[var(--color-secondary)] transition truncate block">{doc.title}</a>
-                    <p className="text-xs text-[var(--color-on-surface-variant)]">{new Date(doc.created_at).toLocaleDateString("sv-SE")} {doc.file_size ? `• ${(doc.file_size / 1024).toFixed(0)} KB` : ""}</p>
+                    <a href={doc.file_url} target="_blank" rel="noopener noreferrer" className="font-semibold text-on-surface hover:text-secondary transition truncate block">{doc.title}</a>
+                    <p className="text-xs text-on-surface-variant">{new Date(doc.created_at).toLocaleDateString("sv-SE")} {doc.file_size ? `• ${(doc.file_size / 1024).toFixed(0)} KB` : ""}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <a href={doc.file_url} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-[10px] flex items-center justify-center text-[var(--color-on-surface-variant)] hover:bg-[var(--color-secondary)]/10 hover:text-[var(--color-secondary)] transition">
+                  <a href={doc.file_url} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-[10px] flex items-center justify-center text-on-surface-variant hover:bg-secondary/10 hover:text-secondary transition">
                     <Download size={16} />
                   </a>
                   {canDelete && (
-                    <button onClick={() => handleDelete(doc.id, doc.file_url)} className="w-9 h-9 rounded-[10px] flex items-center justify-center text-[var(--color-outline)] hover:bg-red-50 hover:text-[var(--color-error)] transition">
+                    <button onClick={() => handleDelete(doc.id, doc.file_url)} className="w-9 h-9 rounded-[10px] flex items-center justify-center text-outline hover:bg-red-50 hover:text-error transition">
                       <Trash2 size={16} />
                     </button>
                   )}

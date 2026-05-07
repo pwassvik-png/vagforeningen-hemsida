@@ -9,7 +9,7 @@ const STATUS_CONFIG: Record<MaintenanceStatus, { label: string; color: string }>
   planned: { label: "Planerat", color: "bg-yellow-100 text-yellow-800" },
   in_progress: { label: "Pågående", color: "bg-blue-100 text-blue-800" },
   completed: { label: "Genomfört", color: "bg-green-100 text-green-800" },
-  deferred: { label: "Uppskjutet", color: "bg-gray-100 text-[var(--color-on-surface-variant)]" },
+  deferred: { label: "Uppskjutet", color: "bg-gray-100 text-on-surface-variant" },
 };
 
 export default function MaintenancePage() {
@@ -55,7 +55,7 @@ export default function MaintenancePage() {
     setItems(items.map((i) => (i.id === id ? { ...i, status } : i)));
   }
 
-  if (loading) return <p className="text-[var(--color-on-surface-variant)]">Laddar...</p>;
+  if (loading) return <p className="text-on-surface-variant">Laddar...</p>;
 
   const grouped = items.reduce((acc, item) => {
     const key = String(item.year);
@@ -69,14 +69,14 @@ export default function MaintenancePage() {
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl sm:text-3xl font-semibold"><Wrench size={24} /> Underhållsplan</h1>
         {canEdit && (
-          <button onClick={() => setShowForm(true)} className="bg-[var(--color-secondary)] text-white px-4 py-2 rounded-[10px] flex items-center gap-2 hover:brightness-110 transition text-sm">
+          <button onClick={() => setShowForm(true)} className="bg-secondary text-white px-4 py-2 rounded-[10px] flex items-center gap-2 hover:brightness-110 transition text-sm">
             <Plus size={16} /> Ny post
           </button>
         )}
       </div>
 
       {showForm && (
-        <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-5 sm:p-6 border border-[var(--color-outline-variant)] shadow-sm mb-6 space-y-4">
+        <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-5 sm:p-6 border border-outline-variant shadow-sm mb-6 space-y-4">
           <div className="flex justify-between items-center">
             <h2 className="text-lg font-semibold">Ny underhållspost</h2>
             <button type="button" onClick={() => setShowForm(false)}><X size={20} /></button>
@@ -96,7 +96,7 @@ export default function MaintenancePage() {
               {contractors.map((c) => <option key={c.id} value={c.id}>{c.company_name}</option>)}
             </select>
           )}
-          <button type="submit" className="bg-[var(--color-secondary)] text-white px-6 py-2 rounded-[10px] hover:brightness-110 transition">Spara</button>
+          <button type="submit" className="bg-secondary text-white px-6 py-2 rounded-[10px] hover:brightness-110 transition">Spara</button>
         </form>
       )}
 
@@ -112,8 +112,8 @@ export default function MaintenancePage() {
                   <div className="flex items-start justify-between">
                     <div>
                       <h3 className="font-medium">{item.title}</h3>
-                      <p className="text-sm text-[var(--color-on-surface-variant)] mt-1">{item.description}</p>
-                      <div className="flex items-center gap-3 mt-2 text-xs text-[var(--color-on-surface-variant)]">
+                      <p className="text-sm text-on-surface-variant mt-1">{item.description}</p>
+                      <div className="flex items-center gap-3 mt-2 text-xs text-on-surface-variant">
                         {item.estimated_cost > 0 && <span>💰 {item.estimated_cost.toLocaleString("sv-SE")} kr</span>}
                         {contractor && <span>🔧 {contractor.company_name}</span>}
                       </div>

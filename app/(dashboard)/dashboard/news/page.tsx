@@ -51,21 +51,21 @@ export default function NewsPage() {
     setPosts(posts.filter((p) => p.id !== id));
   }
 
-  if (loading) return <div className="text-[var(--color-on-surface-variant)] py-8 text-center">Laddar...</div>;
+  if (loading) return <div className="text-on-surface-variant py-8 text-center">Laddar...</div>;
 
   return (
     <div>
       <div className="flex items-center justify-between mb-6 sm:mb-8">
         <div className="flex items-center gap-2.5">
-          <div className="w-10 h-10 rounded-xl bg-[var(--color-secondary)]/10 flex items-center justify-center">
-            <Newspaper size={20} className="text-[var(--color-secondary)]" />
+          <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center">
+            <Newspaper size={20} className="text-secondary" />
           </div>
           <h1 className="text-2xl sm:text-3xl font-semibold">Nyheter</h1>
         </div>
         {canWrite && (
           <button
             onClick={() => setShowForm(true)}
-            className="bg-[var(--color-secondary)] text-white px-4 py-2.5 rounded-[10px] flex items-center gap-2 hover:brightness-110 transition text-sm font-semibold"
+            className="bg-secondary text-white px-4 py-2.5 rounded-[10px] flex items-center gap-2 hover:brightness-110 transition text-sm font-semibold"
           >
             <Plus size={16} /> Nytt inlägg
           </button>
@@ -75,11 +75,11 @@ export default function NewsPage() {
       {showForm && (
         <form
           onSubmit={handleSubmit}
-          className="bg-white rounded-2xl p-5 sm:p-6 border border-[var(--color-outline-variant)] shadow-sm mb-6 space-y-4"
+          className="bg-white rounded-2xl p-5 sm:p-6 border border-outline-variant shadow-sm mb-6 space-y-4"
         >
           <div className="flex justify-between items-center">
             <h2 className="text-lg font-semibold">Nytt inlägg</h2>
-            <button type="button" onClick={() => setShowForm(false)} className="text-[var(--color-on-surface-variant)] hover:text-[var(--color-on-surface)] transition">
+            <button type="button" onClick={() => setShowForm(false)} className="text-on-surface-variant hover:text-on-surface transition">
               <X size={20} />
             </button>
           </div>
@@ -89,7 +89,7 @@ export default function NewsPage() {
             value={form.title}
             onChange={(e) => setForm({ ...form, title: e.target.value })}
             required
-            className="w-full px-4 py-3 border border-[var(--color-outline-variant)] rounded-[10px] bg-[var(--color-surface)] text-[var(--color-on-surface)] focus:ring-2 focus:ring-[var(--color-secondary)] focus:border-transparent outline-none transition"
+            className="w-full px-4 py-3 border border-outline-variant rounded-[10px] bg-surface text-on-surface focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition"
           />
           <textarea
             placeholder="Innehåll"
@@ -97,19 +97,19 @@ export default function NewsPage() {
             onChange={(e) => setForm({ ...form, content: e.target.value })}
             required
             rows={5}
-            className="w-full px-4 py-3 border border-[var(--color-outline-variant)] rounded-[10px] bg-[var(--color-surface)] text-[var(--color-on-surface)] focus:ring-2 focus:ring-[var(--color-secondary)] focus:border-transparent outline-none transition resize-none"
+            className="w-full px-4 py-3 border border-outline-variant rounded-[10px] bg-surface text-on-surface focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition resize-none"
           />
           <div className="flex gap-6">
-            <label className="flex items-center gap-2 text-sm text-[var(--color-on-surface-variant)]">
+            <label className="flex items-center gap-2 text-sm text-on-surface-variant">
               <input type="checkbox" checked={form.is_urgent} onChange={(e) => setForm({ ...form, is_urgent: e.target.checked })} className="rounded" /> Brådskande
             </label>
-            <label className="flex items-center gap-2 text-sm text-[var(--color-on-surface-variant)]">
+            <label className="flex items-center gap-2 text-sm text-on-surface-variant">
               <input type="checkbox" checked={form.is_public} onChange={(e) => setForm({ ...form, is_public: e.target.checked })} className="rounded" /> Offentlig
             </label>
           </div>
           <button
             type="submit"
-            className="bg-[var(--color-secondary)] text-white px-6 py-2.5 rounded-[10px] hover:brightness-110 transition font-semibold"
+            className="bg-secondary text-white px-6 py-2.5 rounded-[10px] hover:brightness-110 transition font-semibold"
           >
             Publicera
           </button>
@@ -118,12 +118,12 @@ export default function NewsPage() {
 
       <div className="space-y-4">
         {posts.length === 0 && (
-          <div className="bg-white rounded-2xl p-8 border border-[var(--color-outline-variant)] shadow-sm text-center text-[var(--color-on-surface-variant)]">
+          <div className="bg-white rounded-2xl p-8 border border-outline-variant shadow-sm text-center text-on-surface-variant">
             Inga nyheter ännu.
           </div>
         )}
         {posts.map((post) => (
-          <div key={post.id} className="bg-white rounded-2xl p-5 sm:p-6 border border-[var(--color-outline-variant)] shadow-sm hover:shadow-md transition">
+          <div key={post.id} className="bg-white rounded-2xl p-5 sm:p-6 border border-outline-variant shadow-sm hover:shadow-md transition">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
                 <div className="flex items-center gap-2 mb-1.5 flex-wrap">
@@ -133,27 +133,27 @@ export default function NewsPage() {
                     </span>
                   )}
                   {post.is_public && (
-                    <span className="bg-[var(--color-secondary)]/5 text-[var(--color-secondary)] text-xs px-2.5 py-0.5 rounded-full font-semibold border border-[var(--color-secondary)]/20">
+                    <span className="bg-secondary/5 text-secondary text-xs px-2.5 py-0.5 rounded-full font-semibold border border-secondary/20">
                       Offentlig
                     </span>
                   )}
                 </div>
-                <h2 className="text-lg font-semibold text-[var(--color-on-surface)]">{post.title}</h2>
-                <p className="text-sm text-[var(--color-on-surface-variant)] mt-1">
+                <h2 className="text-lg font-semibold text-on-surface">{post.title}</h2>
+                <p className="text-sm text-on-surface-variant mt-1">
                   {post.author_name} • {new Date(post.created_at).toLocaleDateString("sv-SE")}
                 </p>
               </div>
               {canWrite && (
                 <button
                   onClick={() => handleDelete(post.id)}
-                  className="text-[var(--color-outline)] hover:text-[var(--color-error)] transition shrink-0"
+                  className="text-outline hover:text-error transition shrink-0"
                   title="Ta bort"
                 >
                   <X size={16} />
                 </button>
               )}
             </div>
-            <p className="mt-3 text-[var(--color-on-surface-variant)] whitespace-pre-wrap leading-relaxed">
+            <p className="mt-3 text-on-surface-variant whitespace-pre-wrap leading-relaxed">
               {post.content}
             </p>
           </div>

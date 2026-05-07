@@ -77,21 +77,21 @@ export default function MeetingsPage() {
     archived: "Arkiverat",
   };
 
-  if (loading) return <p className="text-[var(--color-on-surface-variant)]">Laddar...</p>;
+  if (loading) return <p className="text-on-surface-variant">Laddar...</p>;
 
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl sm:text-3xl font-semibold"><Calendar size={24} /> Möten</h1>
         {canEdit && (
-          <button onClick={() => setShowForm(true)} className="bg-[var(--color-secondary)] text-white px-4 py-2 rounded-[10px] flex items-center gap-2 hover:brightness-110 transition text-sm">
+          <button onClick={() => setShowForm(true)} className="bg-secondary text-white px-4 py-2 rounded-[10px] flex items-center gap-2 hover:brightness-110 transition text-sm">
             <Plus size={16} /> Nytt möte
           </button>
         )}
       </div>
 
       {showForm && (
-        <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-5 sm:p-6 border border-[var(--color-outline-variant)] shadow-sm mb-6 space-y-4">
+        <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-5 sm:p-6 border border-outline-variant shadow-sm mb-6 space-y-4">
           <div className="flex justify-between items-center">
             <h2 className="text-lg font-semibold">Nytt möte</h2>
             <button type="button" onClick={() => setShowForm(false)}><X size={20} /></button>
@@ -105,35 +105,35 @@ export default function MeetingsPage() {
               {MEETING_TYPES.map((t) => <option key={t.value} value={t.value}>{t.label}</option>)}
             </select>
           </div>
-          <button type="submit" className="bg-[var(--color-secondary)] text-white px-6 py-2 rounded-[10px] hover:brightness-110 transition">Skapa möte</button>
+          <button type="submit" className="bg-secondary text-white px-6 py-2 rounded-[10px] hover:brightness-110 transition">Skapa möte</button>
         </form>
       )}
 
       <div className="space-y-4">
-        {meetings.length === 0 && <p className="text-[var(--color-on-surface-variant)]">Inga möten planerade.</p>}
+        {meetings.length === 0 && <p className="text-on-surface-variant">Inga möten planerade.</p>}
         {meetings.map((m) => {
           const typeLabel = MEETING_TYPES.find((t) => t.value === m.type)?.label || m.type;
           return (
-            <div key={m.id} className="bg-white rounded-2xl p-5 sm:p-6 border border-[var(--color-outline-variant)] shadow-sm">
+            <div key={m.id} className="bg-white rounded-2xl p-5 sm:p-6 border border-outline-variant shadow-sm">
               <div className="flex items-start justify-between">
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="bg-[var(--color-secondary)]/10 text-[var(--color-secondary)] text-xs px-2 py-0.5 rounded-full">{typeLabel}</span>
-                    <span className="bg-gray-100 text-[var(--color-on-surface-variant)] text-xs px-2 py-0.5 rounded-full">{statusLabels[m.status] || m.status}</span>
+                    <span className="bg-secondary/10 text-secondary text-xs px-2 py-0.5 rounded-full">{typeLabel}</span>
+                    <span className="bg-gray-100 text-on-surface-variant text-xs px-2 py-0.5 rounded-full">{statusLabels[m.status] || m.status}</span>
                   </div>
                   <h2 className="text-lg font-semibold">{m.title}</h2>
-                  <p className="text-sm text-[var(--color-on-surface-variant)] mt-1">
+                  <p className="text-sm text-on-surface-variant mt-1">
                     📅 {new Date(m.date).toLocaleDateString("sv-SE")} {m.time && `kl ${m.time}`} • 📍 {m.location}
                   </p>
                   {m.fee_per_share && (
-                    <p className="text-sm text-[var(--color-on-surface-variant)] mt-1">Avgift per andel: {m.fee_per_share} kr</p>
+                    <p className="text-sm text-on-surface-variant mt-1">Avgift per andel: {m.fee_per_share} kr</p>
                   )}
                 </div>
                 {canEdit && (
                   <button
                     onClick={() => sendNotice(m)}
                     disabled={sending === m.id}
-                    className="text-sm flex items-center gap-1 text-[var(--color-secondary)] hover:underline disabled:opacity-50"
+                    className="text-sm flex items-center gap-1 text-secondary hover:underline disabled:opacity-50"
                   >
                     <Send size={14} />
                     {sending === m.id ? "Skickar..." : "Skicka kallelse"}

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
-:root {
-  /* Forest Road Design System */
+@theme {
+  /* Forest Road Design System — Custom colors for Tailwind v4 utilities */
   --color-primary: #1B3022;
   --color-primary-container: #1b3022;
   --color-secondary: #2D5A27;

@@ -56,7 +56,7 @@ export default function SettingsPage() {
     setTimeout(() => setSaved(false), 2000);
   }
 
-  if (loading) return <p className="text-[var(--color-on-surface-variant)]">Laddar...</p>;
+  if (loading) return <p className="text-on-surface-variant">Laddar...</p>;
 
   const toggles: { key: keyof NotificationPreference; label: string; desc: string }[] = [
     { key: "news_updates", label: "Nyheter", desc: "Få e-post när styrelsen publicerar nyheter" },
@@ -70,16 +70,16 @@ export default function SettingsPage() {
     <div>
       <h1 className="text-2xl sm:text-3xl font-semibold mb-6"><Settings size={24} /> Inställningar</h1>
 
-      <div className="bg-white rounded-2xl p-5 sm:p-6 border border-[var(--color-outline-variant)] shadow-sm max-w-2xl">
+      <div className="bg-white rounded-2xl p-5 sm:p-6 border border-outline-variant shadow-sm max-w-2xl">
         <h2 className="text-lg font-semibold flex items-center gap-2 mb-4"><Bell size={20} /> E-postnotiser</h2>
-        <p className="text-sm text-[var(--color-on-surface-variant)] mb-6">Välj vilka e-postnotiser du vill få från föreningen.</p>
+        <p className="text-sm text-on-surface-variant mb-6">Välj vilka e-postnotiser du vill få från föreningen.</p>
 
         <div className="space-y-4">
           {toggles.map(({ key, label, desc }) => (
             <label key={key} className="flex items-center justify-between p-3 rounded-[10px] hover:bg-gray-50 cursor-pointer">
               <div>
                 <p className="font-medium">{label}</p>
-                <p className="text-sm text-[var(--color-on-surface-variant)]">{desc}</p>
+                <p className="text-sm text-on-surface-variant">{desc}</p>
               </div>
               <div className="relative">
                 <input
@@ -88,14 +88,14 @@ export default function SettingsPage() {
                   onChange={(e) => setPrefs({ ...prefs, [key]: e.target.checked })}
                   className="sr-only peer"
                 />
-                <div className={`w-11 h-6 rounded-full transition ${prefs[key] ? "bg-[var(--color-secondary)]" : "bg-gray-300"}`} />
+                <div className={`w-11 h-6 rounded-full transition ${prefs[key] ? "bg-secondary" : "bg-gray-300"}`} />
                 <div className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition ${prefs[key] ? "translate-x-5" : ""}`} />
               </div>
             </label>
           ))}
         </div>
 
-        <button onClick={savePrefs} disabled={saving} className="mt-6 bg-[var(--color-secondary)] text-white px-6 py-2 rounded-[10px] flex items-center gap-2 hover:brightness-110 transition disabled:opacity-50">
+        <button onClick={savePrefs} disabled={saving} className="mt-6 bg-secondary text-white px-6 py-2 rounded-[10px] flex items-center gap-2 hover:brightness-110 transition disabled:opacity-50">
           <Save size={16} />
           {saving ? "Sparar..." : saved ? "Sparat ✓" : "Spara inställningar"}
         </button>

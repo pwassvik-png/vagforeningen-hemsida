@@ -37,7 +37,7 @@ export function Sidebar({ role }: { role: string }) {
   return (
     <>
       {/* Desktop sidebar */}
-      <aside className="hidden md:flex md:flex-col md:w-64 md:fixed md:inset-y-0 bg-[var(--color-primary)] text-white">
+      <aside className="hidden md:flex md:flex-col md:w-64 md:fixed md:inset-y-0 bg-primary text-white">
         <div className="p-5 border-b border-white/10">
           <h1 className="text-lg font-bold leading-tight">Skogstorp-Gunntorp</h1>
           <p className="text-xs opacity-60 mt-1">Medlemsportal</p>
@@ -72,7 +72,7 @@ export function Sidebar({ role }: { role: string }) {
       </aside>
 
       {/* Mobile bottom nav */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-[var(--color-primary)] text-white z-50 border-t border-white/10 safe-area-bottom">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-primary text-white z-50 border-t border-white/10 safe-area-bottom">
         <div className="flex justify-around py-2">
           {filteredNav.slice(0, 5).map((item) => {
             const isActive = pathname === item.href;

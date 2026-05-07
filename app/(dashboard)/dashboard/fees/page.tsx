@@ -53,7 +53,7 @@ export default function FeesPage() {
   const paidShares = members.filter((m) => m.has_paid_fee).reduce((sum, m) => sum + Number(m.share_value), 0);
   const unitCost = feeSettings?.unit_cost || 963;
 
-  if (loading) return <p className="text-[var(--color-on-surface-variant)]">Laddar...</p>;
+  if (loading) return <p className="text-on-surface-variant">Laddar...</p>;
 
   return (
     <div>
@@ -61,38 +61,38 @@ export default function FeesPage() {
 
       {/* Egen avgift */}
       {currentUser && (
-        <div className="bg-white rounded-2xl p-5 sm:p-6 border border-[var(--color-outline-variant)] shadow-sm mb-6">
+        <div className="bg-white rounded-2xl p-5 sm:p-6 border border-outline-variant shadow-sm mb-6">
           <h2 className="text-lg font-semibold mb-2">Din avgift</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div><p className="text-sm text-[var(--color-on-surface-variant)]">Fastighet</p><p className="font-semibold">{currentUser.property_designation}</p></div>
-            <div><p className="text-sm text-[var(--color-on-surface-variant)]">Andelstal</p><p className="font-semibold">{currentUser.share_value}</p></div>
-            <div><p className="text-sm text-[var(--color-on-surface-variant)]">Att betala</p><p className="font-semibold text-xl">{(Number(currentUser.share_value) * unitCost).toLocaleString("sv-SE")} kr</p></div>
-            <div><p className="text-sm text-[var(--color-on-surface-variant)]">Status</p><p className={`font-semibold ${currentUser.has_paid_fee ? "text-green-600" : "text-red-600"}`}>{currentUser.has_paid_fee ? "✓ Betald" : "✗ Obetald"}</p></div>
+            <div><p className="text-sm text-on-surface-variant">Fastighet</p><p className="font-semibold">{currentUser.property_designation}</p></div>
+            <div><p className="text-sm text-on-surface-variant">Andelstal</p><p className="font-semibold">{currentUser.share_value}</p></div>
+            <div><p className="text-sm text-on-surface-variant">Att betala</p><p className="font-semibold text-xl">{(Number(currentUser.share_value) * unitCost).toLocaleString("sv-SE")} kr</p></div>
+            <div><p className="text-sm text-on-surface-variant">Status</p><p className={`font-semibold ${currentUser.has_paid_fee ? "text-green-600" : "text-red-600"}`}>{currentUser.has_paid_fee ? "✓ Betald" : "✗ Obetald"}</p></div>
           </div>
         </div>
       )}
 
       {/* Admin: avgiftsinställningar */}
       {isAdmin && (
-        <div className="bg-white rounded-2xl p-5 sm:p-6 border border-[var(--color-outline-variant)] shadow-sm mb-6">
+        <div className="bg-white rounded-2xl p-5 sm:p-6 border border-outline-variant shadow-sm mb-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold">Avgiftsinställningar</h2>
-            {!editUnitCost && <button onClick={() => { setEditUnitCost(true); setNewUnitCost(String(unitCost)); }} className="text-sm text-[var(--color-secondary)] hover:underline">Ändra</button>}
+            {!editUnitCost && <button onClick={() => { setEditUnitCost(true); setNewUnitCost(String(unitCost)); }} className="text-sm text-secondary hover:underline">Ändra</button>}
           </div>
           {editUnitCost ? (
             <div className="flex gap-2 items-center">
               <span>Kr per andel:</span>
               <input type="number" value={newUnitCost} onChange={(e) => setNewUnitCost(e.target.value)} className="border rounded px-3 py-1 w-32" />
-              <button onClick={saveFeeSettings} className="bg-[var(--color-secondary)] text-white px-4 py-1 rounded text-sm">Spara</button>
-              <button onClick={() => setEditUnitCost(false)} className="text-[var(--color-on-surface-variant)] text-sm">Avbryt</button>
+              <button onClick={saveFeeSettings} className="bg-secondary text-white px-4 py-1 rounded text-sm">Spara</button>
+              <button onClick={() => setEditUnitCost(false)} className="text-on-surface-variant text-sm">Avbryt</button>
             </div>
           ) : (
-            <p className="text-2xl font-bold">{unitCost.toLocaleString("sv-SE")} kr <span className="text-sm font-normal text-[var(--color-on-surface-variant)]">per andelstal</span></p>
+            <p className="text-2xl font-bold">{unitCost.toLocaleString("sv-SE")} kr <span className="text-sm font-normal text-on-surface-variant">per andelstal</span></p>
           )}
           <div className="mt-4 grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
-            <div><p className="text-[var(--color-on-surface-variant)]">Totalt antal andelar</p><p className="font-semibold">{totalShares.toFixed(2)}</p></div>
-            <div><p className="text-[var(--color-on-surface-variant)]">Betalda andelar</p><p className="font-semibold text-green-600">{paidShares.toFixed(2)}</p></div>
-            <div><p className="text-[var(--color-on-surface-variant)]">Obetalda andelar</p><p className="font-semibold text-red-600">{(totalShares - paidShares).toFixed(2)}</p></div>
+            <div><p className="text-on-surface-variant">Totalt antal andelar</p><p className="font-semibold">{totalShares.toFixed(2)}</p></div>
+            <div><p className="text-on-surface-variant">Betalda andelar</p><p className="font-semibold text-green-600">{paidShares.toFixed(2)}</p></div>
+            <div><p className="text-on-surface-variant">Obetalda andelar</p><p className="font-semibold text-red-600">{(totalShares - paidShares).toFixed(2)}</p></div>
           </div>
         </div>
       )}
@@ -102,7 +102,7 @@ export default function FeesPage() {
         <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
-              <thead className="bg-[var(--color-secondary)] text-white">
+              <thead className="bg-secondary text-white">
                 <tr>
                   <th className="px-4 py-3 text-left">Namn</th>
                   <th className="px-4 py-3 text-left">Fastighet</th>

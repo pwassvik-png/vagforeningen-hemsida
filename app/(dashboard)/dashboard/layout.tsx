@@ -33,7 +33,7 @@ export default async function DashboardLayout({
     : null;
 
   return (
-    <div className="min-h-screen bg-[var(--color-surface)] flex">
+    <div className="min-h-screen bg-surface flex">
       <Sidebar role={member?.role || "medlem"} />
       <div className="flex-1 md:ml-64">
         <TopBar member={member} />

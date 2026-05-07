@@ -22,10 +22,10 @@ export default async function DashboardPage() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl sm:text-3xl font-semibold text-[var(--color-on-surface)]">
+        <h1 className="text-2xl sm:text-3xl font-semibold text-on-surface">
           Översikt
         </h1>
-        <p className="text-[var(--color-on-surface-variant)] mt-1">
+        <p className="text-on-surface-variant mt-1">
           Välkommen tillbaka, {firstName}
         </p>
       </div>
@@ -82,9 +82,9 @@ export default async function DashboardPage() {
       </div>
 
       {/* Recent Activity */}
-      <div className="bg-white rounded-2xl p-5 sm:p-6 border border-[var(--color-outline-variant)] shadow-sm">
+      <div className="bg-white rounded-2xl p-5 sm:p-6 border border-outline-variant shadow-sm">
         <h2 className="text-lg sm:text-xl font-semibold mb-4">Senaste aktivitet</h2>
-        <div className="text-sm text-[var(--color-on-surface-variant)] py-4 text-center">
+        <div className="text-sm text-on-surface-variant py-4 text-center">
           Aktivitet kommer att visas här när medlemmar börjar använda portalen.
         </div>
       </div>
@@ -108,19 +108,19 @@ function StatCard({
   const accentBg =
     accent === "warning"
       ? "bg-orange-50 border-orange-200"
-      : "bg-[var(--color-secondary)]/5 border-transparent";
+      : "bg-secondary/5 border-transparent";
 
   return (
-    <div className={`bg-white rounded-2xl p-4 sm:p-5 border border-[var(--color-outline-variant)] shadow-sm`}>
+    <div className={`bg-white rounded-2xl p-4 sm:p-5 border border-outline-variant shadow-sm`}>
       <div className="flex items-start gap-3">
         <div className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl ${accentBg} flex items-center justify-center text-lg sm:text-xl shrink-0`}>
           {icon}
         </div>
         <div className="min-w-0">
-          <p className="text-xs sm:text-sm text-[var(--color-on-surface-variant)]">{title}</p>
-          <p className="text-lg sm:text-xl font-semibold text-[var(--color-on-surface)]">{value}</p>
+          <p className="text-xs sm:text-sm text-on-surface-variant">{title}</p>
+          <p className="text-lg sm:text-xl font-semibold text-on-surface">{value}</p>
           {subtitle && (
-            <p className="text-xs text-[var(--color-on-surface-variant)]">{subtitle}</p>
+            <p className="text-xs text-on-surface-variant">{subtitle}</p>
           )}
         </div>
       </div>
@@ -142,16 +142,16 @@ function QuickAction({
   return (
     <a
       href={href}
-      className="bg-white rounded-2xl p-4 sm:p-5 border border-[var(--color-outline-variant)] shadow-sm hover:shadow-md hover:border-[var(--color-secondary)]/30 transition group flex items-center gap-3"
+      className="bg-white rounded-2xl p-4 sm:p-5 border border-outline-variant shadow-sm hover:shadow-md hover:border-secondary/30 transition group flex items-center gap-3"
     >
-      <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[var(--color-secondary)]/5 flex items-center justify-center text-lg sm:text-xl shrink-0">
+      <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-secondary/5 flex items-center justify-center text-lg sm:text-xl shrink-0">
         {icon}
       </div>
       <div>
-        <h3 className="font-semibold text-sm sm:text-base text-[var(--color-on-surface)] group-hover:text-[var(--color-secondary)] transition">
+        <h3 className="font-semibold text-sm sm:text-base text-on-surface group-hover:text-secondary transition">
           {title}
         </h3>
-        <p className="text-xs sm:text-sm text-[var(--color-on-surface-variant)]">{description}</p>
+        <p className="text-xs sm:text-sm text-on-surface-variant">{description}</p>
       </div>
     </a>
   );
