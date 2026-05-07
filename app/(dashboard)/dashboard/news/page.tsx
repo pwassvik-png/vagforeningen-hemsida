@@ -51,55 +51,111 @@ export default function NewsPage() {
     setPosts(posts.filter((p) => p.id !== id));
   }
 
-  if (loading) return <p className="text-gray-500">Laddar...</p>;
+  if (loading) return <div className="text-[var(--color-on-surface-variant)] py-8 text-center">Laddar...</div>;
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold flex items-center gap-2"><Newspaper size={24} /> Nyheter</h1>
+      <div className="flex items-center justify-between mb-6 sm:mb-8">
+        <div className="flex items-center gap-2.5">
+          <div className="w-10 h-10 rounded-xl bg-[var(--color-secondary)]/10 flex items-center justify-center">
+            <Newspaper size={20} className="text-[var(--color-secondary)]" />
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-semibold">Nyheter</h1>
+        </div>
         {canWrite && (
-          <button onClick={() => setShowForm(true)} className="bg-[var(--color-forest)] text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-[var(--color-forest-light)] transition text-sm">
+          <button
+            onClick={() => setShowForm(true)}
+            className="bg-[var(--color-secondary)] text-white px-4 py-2.5 rounded-[10px] flex items-center gap-2 hover:brightness-110 transition text-sm font-semibold"
+          >
             <Plus size={16} /> Nytt inlägg
           </button>
         )}
       </div>
 
       {showForm && (
-        <form onSubmit={handleSubmit} className="bg-white rounded-xl p-6 shadow-sm mb-6 space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white rounded-2xl p-5 sm:p-6 border border-[var(--color-outline-variant)] shadow-sm mb-6 space-y-4"
+        >
           <div className="flex justify-between items-center">
             <h2 className="text-lg font-semibold">Nytt inlägg</h2>
-            <button type="button" onClick={() => setShowForm(false)}><X size={20} /></button>
+            <button type="button" onClick={() => setShowForm(false)} className="text-[var(--color-on-surface-variant)] hover:text-[var(--color-on-surface)] transition">
+              <X size={20} />
+            </button>
           </div>
-          <input type="text" placeholder="Rubrik" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required className="w-full px-4 py-2 border rounded-lg" />
-          <textarea placeholder="Innehåll" value={form.content} onChange={(e) => setForm({ ...form, content: e.target.value })} required rows={5} className="w-full px-4 py-2 border rounded-lg" />
+          <input
+            type="text"
+            placeholder="Rubrik"
+            value={form.title}
+            onChange={(e) => setForm({ ...form, title: e.target.value })}
+            required
+            className="w-full px-4 py-3 border border-[var(--color-outline-variant)] rounded-[10px] bg-[var(--color-surface)] text-[var(--color-on-surface)] focus:ring-2 focus:ring-[var(--color-secondary)] focus:border-transparent outline-none transition"
+          />
+          <textarea
+            placeholder="Innehåll"
+            value={form.content}
+            onChange={(e) => setForm({ ...form, content: e.target.value })}
+            required
+            rows={5}
+            className="w-full px-4 py-3 border border-[var(--color-outline-variant)] rounded-[10px] bg-[var(--color-surface)] text-[var(--color-on-surface)] focus:ring-2 focus:ring-[var(--color-secondary)] focus:border-transparent outline-none transition resize-none"
+          />
           <div className="flex gap-6">
-            <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={form.is_urgent} onChange={(e) => setForm({ ...form, is_urgent: e.target.checked })} /> Brådskande</label>
-            <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={form.is_public} onChange={(e) => setForm({ ...form, is_public: e.target.checked })} /> Offentlig (synlig utan inloggning)</label>
+            <label className="flex items-center gap-2 text-sm text-[var(--color-on-surface-variant)]">
+              <input type="checkbox" checked={form.is_urgent} onChange={(e) => setForm({ ...form, is_urgent: e.target.checked })} className="rounded" /> Brådskande
+            </label>
+            <label className="flex items-center gap-2 text-sm text-[var(--color-on-surface-variant)]">
+              <input type="checkbox" checked={form.is_public} onChange={(e) => setForm({ ...form, is_public: e.target.checked })} className="rounded" /> Offentlig
+            </label>
           </div>
-          <button type="submit" className="bg-[var(--color-forest)] text-white px-6 py-2 rounded-lg hover:bg-[var(--color-forest-light)] transition">Publicera</button>
+          <button
+            type="submit"
+            className="bg-[var(--color-secondary)] text-white px-6 py-2.5 rounded-[10px] hover:brightness-110 transition font-semibold"
+          >
+            Publicera
+          </button>
         </form>
       )}
 
       <div className="space-y-4">
-        {posts.length === 0 && <p className="text-gray-500">Inga nyheter ännu.</p>}
+        {posts.length === 0 && (
+          <div className="bg-white rounded-2xl p-8 border border-[var(--color-outline-variant)] shadow-sm text-center text-[var(--color-on-surface-variant)]">
+            Inga nyheter ännu.
+          </div>
+        )}
         {posts.map((post) => (
-          <div key={post.id} className="bg-white rounded-xl p-6 shadow-sm">
-            <div className="flex items-start justify-between">
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  {post.is_urgent && <span className="bg-red-100 text-red-700 text-xs px-2 py-0.5 rounded-full flex items-center gap-1"><AlertTriangle size={12} /> Brådskande</span>}
-                  {post.is_public && <span className="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Offentlig</span>}
+          <div key={post.id} className="bg-white rounded-2xl p-5 sm:p-6 border border-[var(--color-outline-variant)] shadow-sm hover:shadow-md transition">
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0">
+                <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                  {post.is_urgent && (
+                    <span className="bg-red-50 text-red-700 text-xs px-2.5 py-0.5 rounded-full flex items-center gap-1 font-semibold border border-red-200">
+                      <AlertTriangle size={11} /> Brådskande
+                    </span>
+                  )}
+                  {post.is_public && (
+                    <span className="bg-[var(--color-secondary)]/5 text-[var(--color-secondary)] text-xs px-2.5 py-0.5 rounded-full font-semibold border border-[var(--color-secondary)]/20">
+                      Offentlig
+                    </span>
+                  )}
                 </div>
-                <h2 className="text-lg font-semibold">{post.title}</h2>
-                <p className="text-sm text-gray-500 mt-1">{post.author_name} • {new Date(post.created_at).toLocaleDateString("sv-SE")}</p>
+                <h2 className="text-lg font-semibold text-[var(--color-on-surface)]">{post.title}</h2>
+                <p className="text-sm text-[var(--color-on-surface-variant)] mt-1">
+                  {post.author_name} • {new Date(post.created_at).toLocaleDateString("sv-SE")}
+                </p>
               </div>
               {canWrite && (
-                <button onClick={() => handleDelete(post.id)} className="text-gray-400 hover:text-red-500 transition" title="Ta bort">
+                <button
+                  onClick={() => handleDelete(post.id)}
+                  className="text-[var(--color-outline)] hover:text-[var(--color-error)] transition shrink-0"
+                  title="Ta bort"
+                >
                   <X size={16} />
                 </button>
               )}
             </div>
-            <p className="mt-3 text-gray-700 whitespace-pre-wrap">{post.content}</p>
+            <p className="mt-3 text-[var(--color-on-surface-variant)] whitespace-pre-wrap leading-relaxed">
+              {post.content}
+            </p>
           </div>
         ))}
       </div>

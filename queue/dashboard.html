@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="light" lang="sv"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f2f1ec",
+                        "on-primary-container": "#819986",
+                        "surface-container-highest": "#e4e2dd",
+                        "surface-dim": "#dbdad5",
+                        "on-primary-fixed": "#0b2013",
+                        "secondary-container": "#b9eeab",
+                        "secondary-fixed": "#bcf0ae",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fbf9f4",
+                        "primary-container": "#1b3022",
+                        "surface-container": "#f0eee9",
+                        "primary-fixed-dim": "#b4cdb8",
+                        "on-surface-variant": "#434843",
+                        "primary-fixed": "#d0e9d4",
+                        "outline-variant": "#c3c8c1",
+                        "surface-container-high": "#eae8e3",
+                        "on-tertiary-fixed": "#281803",
+                        "on-primary-fixed-variant": "#364c3c",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#3f6d38",
+                        "on-secondary-fixed": "#002201",
+                        "tertiary-fixed": "#fdddb9",
+                        "inverse-surface": "#30312e",
+                        "secondary-fixed-dim": "#a1d494",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#b4cdb8",
+                        "surface-variant": "#e4e2dd",
+                        "on-secondary-fixed-variant": "#23501e",
+                        "on-tertiary-container": "#a98e6e",
+                        "tertiary-fixed-dim": "#e0c29f",
+                        "surface-bright": "#fbf9f4",
+                        "background": "#fbf9f4",
+                        "secondary": "#3b6934",
+                        "tertiary": "#231401",
+                        "surface-container-low": "#f5f3ee",
+                        "on-background": "#1b1c19",
+                        "primary": "#061b0e",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#4d6453",
+                        "on-tertiary-fixed-variant": "#584329",
+                        "tertiary-container": "#3a2810",
+                        "on-surface": "#1b1c19",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#737973"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "xl": "80px",
+                        "container-max": "1200px",
+                        "sm": "12px",
+                        "md": "24px",
+                        "lg": "48px",
+                        "xs": "4px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "h1": ["Manrope"],
+                        "h2": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "h3": ["Manrope"],
+                        "button": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "h2": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "button": ["16px", {"lineHeight": "1.0", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #fbf9f4;
+            font-family: 'Manrope', sans-serif;
+            color: #1b1c19;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .forest-shadow {
+            box-shadow: 0 4px 20px -2px rgba(27, 48, 34, 0.08), 0 2px 8px -1px rgba(27, 48, 34, 0.04);
+        }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- Left Sidebar Shell -->
+<aside class="w-72 bg-primary-container text-white flex flex-col sticky top-0 h-screen overflow-y-auto shrink-0">
+<div class="px-md py-lg">
+<h1 class="font-h3 text-h3 font-bold text-on-primary-fixed-variant leading-tight">Skogstorp-<br/>Gunntorp</h1>
+<p class="font-label-caps text-label-caps text-on-primary-container mt-xs">Samfällighet</p>
+</div>
+<nav class="flex-grow px-sm space-y-xs">
+<!-- Active State Navigation -->
+<a class="flex items-center gap-sm px-md py-sm rounded-lg bg-on-primary-container/20 text-white font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-body-md text-body-md">Översikt</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-primary-container hover:bg-on-primary-container/10 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="newspaper">newspaper</span>
+<span class="font-body-md text-body-md">Nyheter</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-primary-container hover:bg-on-primary-container/10 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="report_problem">report_problem</span>
+<span class="font-body-md text-body-md">Problem</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-primary-container hover:bg-on-primary-container/10 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="folder">folder</span>
+<span class="font-body-md text-body-md">Dokument</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-primary-container hover:bg-on-primary-container/10 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-body-md text-body-md">Medlemmar</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-primary-container hover:bg-on-primary-container/10 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-body-md text-body-md">Möten</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-primary-container hover:bg-on-primary-container/10 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-body-md text-body-md">Karta</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-primary-container hover:bg-on-primary-container/10 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="construction">construction</span>
+<span class="font-body-md text-body-md">Underhåll</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-primary-container hover:bg-on-primary-container/10 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-body-md text-body-md">Avgifter</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-primary-container hover:bg-on-primary-container/10 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Inställningar</span>
+</a>
+</nav>
+<div class="p-md mt-auto">
+<button class="flex items-center gap-sm w-full px-md py-sm rounded-lg text-on-primary-container hover:text-error hover:bg-error/10 transition-colors">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-body-md text-body-md">Logga ut</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-grow bg-surface min-h-screen">
+<div class="max-w-[1200px] mx-auto px-lg py-xl">
+<!-- Header Section -->
+<header class="flex justify-between items-end mb-lg">
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Översikt</span>
+<h2 class="font-h1 text-h1 text-primary mt-xs">Hej Peter!</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Välkommen tillbaka till föreningens kontrollpanel.</p>
+</div>
+<div class="hidden md:block">
+<img alt="Peter Profile" class="w-12 h-12 rounded-full border-2 border-primary-fixed object-cover" data-alt="A professional headshot of a friendly man in his 40s with a warm smile, set against a blurred outdoor background of a sunlit pine forest. The lighting is soft and natural, emphasizing a high-key, approachable aesthetic. The image captures the modern, trust-oriented atmosphere of a community management platform with crisp details and a clean, minimalist feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWscGxwppwnoXfLpW5knFXNiYbSAGjv9e-ePvTg--PevgSRFeRkextX9G9QXFJrN_A-owxhpe889JHge_t2om8trUCVvQSA5TKIAW7ujefaLLUx0OoK8dVZcoodRc78gh0-XoCCpYZgGmpeDcYJPdu6RVtcanSmZLjEC-vZtAOvxKcqF0iKGuNRoelsz8nraSIGLgfFalAGuDDh2I26dPr-QRy6W7QblKTU-l9oX_urJdz8JStDiC2_mxWaOj5F-8pIAxHzLOeXDU"/>
+</div>
+</header>
+<!-- Summary Cards Grid -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md mb-xl">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl forest-shadow transition-transform hover:-translate-y-1">
+<div class="flex justify-between items-start mb-sm">
+<div class="p-xs bg-secondary-container rounded-lg">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="group">group</span>
+</div>
+</div>
+<div class="font-h3 text-h3 text-primary">114</div>
+<div class="font-body-md text-body-md text-on-surface-variant">Medlemmar</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl forest-shadow transition-transform hover:-translate-y-1">
+<div class="flex justify-between items-start mb-sm">
+<div class="p-xs bg-tertiary-fixed rounded-lg">
+<span class="material-symbols-outlined text-on-tertiary-fixed" data-icon="bug_report">bug_report</span>
+</div>
+<span class="bg-tertiary text-tertiary-fixed text-[10px] font-bold px-sm py-[2px] rounded-full uppercase">3 Aktiva</span>
+</div>
+<div class="font-h3 text-h3 text-primary">3</div>
+<div class="font-body-md text-body-md text-on-surface-variant">Öppna ärenden</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl forest-shadow transition-transform hover:-translate-y-1">
+<div class="flex justify-between items-start mb-sm">
+<div class="p-xs bg-primary-fixed rounded-lg">
+<span class="material-symbols-outlined text-on-primary-fixed" data-icon="newspaper">newspaper</span>
+</div>
+</div>
+<div class="font-h3 text-h3 text-primary">2</div>
+<div class="font-body-md text-body-md text-on-surface-variant">Nyheter</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl forest-shadow transition-transform hover:-translate-y-1">
+<div class="flex justify-between items-start mb-sm">
+<div class="p-xs bg-secondary-fixed rounded-lg">
+<span class="material-symbols-outlined text-on-secondary-fixed" data-icon="event">event</span>
+</div>
+</div>
+<div class="font-h3 text-h3 text-primary">1</div>
+<div class="font-body-md text-body-md text-on-surface-variant">Kommande möte</div>
+</div>
+</section>
+<!-- Asymmetric Bento-style Layout for News and Activity -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Latest Activity Timeline (2/3 width) -->
+<section class="lg:col-span-2 space-y-md">
+<div class="flex justify-between items-center px-xs">
+<h3 class="font-h3 text-h3 text-primary">Senaste aktivitet</h3>
+<button class="font-button text-button text-secondary hover:underline transition-all">Visa alla</button>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg forest-shadow">
+<div class="relative space-y-lg before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-outline-variant">
+<!-- Activity Item 1 -->
+<div class="relative pl-lg">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-secondary border-4 border-surface-container-lowest z-10"></div>
+<div class="flex flex-col md:flex-row md:justify-between md:items-start gap-xs">
+<div>
+<h4 class="font-body-lg text-body-lg font-bold text-primary">Ny felanmälan inskickad</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Vägskada vid infarten mot Gunntorp behöver åtgärdas snarast.</p>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant/60 whitespace-nowrap">Idag, 10:45</span>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="relative pl-lg">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-outline-variant border-4 border-surface-container-lowest z-10"></div>
+<div class="flex flex-col md:flex-row md:justify-between md:items-start gap-xs">
+<div>
+<h4 class="font-body-lg text-body-lg font-bold text-primary">Nytt dokument uppladdat</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Årsredovisning 2023 har lagts till i dokumentarkivet.</p>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant/60 whitespace-nowrap">Igår, 15:20</span>
+</div>
+</div>
+<!-- Activity Item 3 -->
+<div class="relative pl-lg">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-outline-variant border-4 border-surface-container-lowest z-10"></div>
+<div class="flex flex-col md:flex-row md:justify-between md:items-start gap-xs">
+<div>
+<h4 class="font-body-lg text-body-lg font-bold text-primary">Mötesprotokoll tillagt</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Protokoll från styrelsemötet den 12:e Maj finns nu tillgängligt.</p>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant/60 whitespace-nowrap">2 dagar sedan</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sidebar Content (1/3 width) -->
+<aside class="space-y-lg">
+<!-- Quick Map Card -->
+<div class="space-y-sm">
+<h3 class="font-h3 text-h3 text-primary">Områdeskarta</h3>
+<div class="relative h-48 rounded-xl border border-outline-variant overflow-hidden group">
+<img alt="Area Map" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A top-down stylized map of a rustic Swedish residential area surrounded by dense green pine forests and gravel roads. the map is clean and minimalist with soft earth tones of sand and moss green, mirroring the UI color palette. The aesthetic is serene and professional, emphasizing the freedom to roam and communal organization of the Skogstorp-Gunntorp association." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7RAWGcgDI-J45SziZsLJdpe9MWRTHgvuP48-EJBU-2bFi5ysLEobwf-Pqa2Z8scq8i8Gby_5oHdJnDdDw4hsWDIGTSC2kN19yLU7r2GXp9bOAWFvtY3Kni9Cd5083IDtXvVfu4t0ql5sXFbch7cB9dW-Uv-T-es-0Fi2Vt6URKoIJ2ITRuP4jt1TPb-C_DH42d9TZlPFNE4_Mo9aVOrOJDjpWXMV-TfKAyZsx970cs29tFbF0pBGHsKkcKkn_XCnD_M5kmgp_JgE"/>
+<div class="absolute inset-0 bg-primary/20 flex items-center justify-center">
+<button class="bg-surface px-md py-sm rounded-full font-button text-button text-primary flex items-center gap-xs shadow-lg hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined" data-icon="open_in_new">open_in_new</span>
+                                    Öppna karta
+                                </button>
+</div>
+</div>
+</div>
+<!-- Upcoming Meeting Alert -->
+<div class="bg-primary-container p-md rounded-xl text-white space-y-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary-fixed" data-icon="event">event</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-on-primary-container">Nästa Möte</span>
+</div>
+<div>
+<h4 class="font-h3 text-h3">Årsstämma 2024</h4>
+<p class="font-body-md text-body-md opacity-80 mt-xs">25 Maj • 18:30 • Föreningsgården</p>
+</div>
+<button class="w-full py-sm bg-secondary text-white rounded-lg font-button text-button hover:bg-secondary/90 transition-colors">
+                            Visa kallelse
+                        </button>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Only on Dashboard) -->
+<button class="fixed bottom-lg right-lg w-14 h-14 bg-secondary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</body></html>
