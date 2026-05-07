@@ -1,17 +1,33 @@
 @import "tailwindcss";
 
 :root {
-  --color-forest: #2d5016;
-  --color-forest-light: #4a7c2e;
-  --color-forest-dark: #1a3009;
-  --color-sand: #f5f0e8;
-  --color-sand-dark: #e8dcc8;
+  /* Forest Road Design System */
+  --color-primary: #1B3022;
+  --color-primary-container: #1b3022;
+  --color-secondary: #2D5A27;
+  --color-secondary-light: #3b6934;
+  --color-surface: #F9F7F2;
+  --color-surface-container: #F0EEE9;
+  --color-surface-container-low: #F5F3EE;
+  --color-surface-container-high: #EAE8E3;
+  --color-surface-dim: #DBDAD5;
+  --color-on-surface: #1B1C19;
+  --color-on-surface-variant: #434843;
+  --color-outline: #737973;
+  --color-outline-variant: #C3C8C1;
+  --color-error: #BA1A1A;
+  --color-tertiary: #8C7355;
+  --color-on-primary: #FFFFFF;
+  --color-inverse-surface: #30312E;
+  --color-inverse-on-surface: #F2F1EC;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: var(--color-sand);
-  color: #1a1a1a;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Leaflet fix för SSR */

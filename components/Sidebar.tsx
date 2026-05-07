@@ -37,10 +37,10 @@ export function Sidebar({ role }: { role: string }) {
   return (
     <>
       {/* Desktop sidebar */}
-      <aside className="hidden md:flex md:flex-col md:w-64 md:fixed md:inset-y-0 bg-[var(--color-forest)] text-white">
-        <div className="p-4 border-b border-white/10">
-          <h1 className="text-lg font-bold">Skogstorp-Gunntorp</h1>
-          <p className="text-xs opacity-70">Medlemsportal</p>
+      <aside className="hidden md:flex md:flex-col md:w-64 md:fixed md:inset-y-0 bg-[var(--color-primary)] text-white">
+        <div className="p-5 border-b border-white/10">
+          <h1 className="text-lg font-bold leading-tight">Skogstorp-Gunntorp</h1>
+          <p className="text-xs opacity-60 mt-1">Medlemsportal</p>
         </div>
         <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
           {filteredNav.map((item) => {
@@ -49,10 +49,10 @@ export function Sidebar({ role }: { role: string }) {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition ${
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-sm transition-all ${
                   isActive
                     ? "bg-white/20 font-semibold"
-                    : "hover:bg-white/10"
+                    : "hover:bg-white/10 opacity-80 hover:opacity-100"
                 }`}
               >
                 <item.icon size={18} />
@@ -63,7 +63,7 @@ export function Sidebar({ role }: { role: string }) {
         </nav>
         <div className="p-4 border-t border-white/10">
           <form action="/api/auth/logout" method="POST">
-            <button className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm hover:bg-white/10 w-full transition">
+            <button className="flex items-center gap-3 px-3 py-2.5 rounded-[10px] text-sm hover:bg-white/10 w-full transition opacity-70 hover:opacity-100">
               <LogOut size={18} />
               Logga ut
             </button>
@@ -72,7 +72,7 @@ export function Sidebar({ role }: { role: string }) {
       </aside>
 
       {/* Mobile bottom nav */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-[var(--color-forest)] text-white z-50 border-t border-white/10">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-[var(--color-primary)] text-white z-50 border-t border-white/10 safe-area-bottom">
         <div className="flex justify-around py-2">
           {filteredNav.slice(0, 5).map((item) => {
             const isActive = pathname === item.href;
@@ -80,8 +80,8 @@ export function Sidebar({ role }: { role: string }) {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex flex-col items-center gap-1 px-2 py-1 text-xs ${
-                  isActive ? "opacity-100" : "opacity-60"
+                className={`flex flex-col items-center gap-1 px-2 py-1 text-xs transition ${
+                  isActive ? "opacity-100 font-semibold" : "opacity-50"
                 }`}
               >
                 <item.icon size={20} />
