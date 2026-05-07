@@ -9,7 +9,7 @@ const STATUS_CONFIG: Record<MaintenanceStatus, { label: string; color: string }>
   planned: { label: "Planerat", color: "bg-yellow-100 text-yellow-800" },
   in_progress: { label: "Pågående", color: "bg-blue-100 text-blue-800" },
   completed: { label: "Genomfört", color: "bg-green-100 text-green-800" },
-  deferred: { label: "Uppskjutet", color: "bg-gray-100 text-gray-700" },
+  deferred: { label: "Uppskjutet", color: "bg-gray-100 text-[var(--color-on-surface-variant)]" },
 };
 
 export default function MaintenancePage() {
@@ -55,7 +55,7 @@ export default function MaintenancePage() {
     setItems(items.map((i) => (i.id === id ? { ...i, status } : i)));
   }
 
-  if (loading) return <p className="text-gray-500">Laddar...</p>;
+  if (loading) return <p className="text-[var(--color-on-surface-variant)]">Laddar...</p>;
 
   const grouped = items.reduce((acc, item) => {
     const key = String(item.year);
@@ -67,36 +67,36 @@ export default function MaintenancePage() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold flex items-center gap-2"><Wrench size={24} /> Underhållsplan</h1>
+        <h1 className="text-2xl sm:text-3xl font-semibold"><Wrench size={24} /> Underhållsplan</h1>
         {canEdit && (
-          <button onClick={() => setShowForm(true)} className="bg-[var(--color-forest)] text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-[var(--color-forest-light)] transition text-sm">
+          <button onClick={() => setShowForm(true)} className="bg-[var(--color-secondary)] text-white px-4 py-2 rounded-[10px] flex items-center gap-2 hover:brightness-110 transition text-sm">
             <Plus size={16} /> Ny post
           </button>
         )}
       </div>
 
       {showForm && (
-        <form onSubmit={handleSubmit} className="bg-white rounded-xl p-6 shadow-sm mb-6 space-y-4">
+        <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-5 sm:p-6 border border-[var(--color-outline-variant)] shadow-sm mb-6 space-y-4">
           <div className="flex justify-between items-center">
             <h2 className="text-lg font-semibold">Ny underhållspost</h2>
             <button type="button" onClick={() => setShowForm(false)}><X size={20} /></button>
           </div>
-          <input type="text" placeholder="Titel" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required className="w-full px-4 py-2 border rounded-lg" />
-          <textarea placeholder="Beskrivning" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} required rows={3} className="w-full px-4 py-2 border rounded-lg" />
+          <input type="text" placeholder="Titel" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required className="w-full px-4 py-2 border rounded-[10px]" />
+          <textarea placeholder="Beskrivning" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} required rows={3} className="w-full px-4 py-2 border rounded-[10px]" />
           <div className="grid grid-cols-3 gap-4">
-            <input type="number" placeholder="År" value={form.year} onChange={(e) => setForm({ ...form, year: Number(e.target.value) })} className="px-4 py-2 border rounded-lg" />
-            <input type="number" placeholder="Kostnad (kr)" value={form.estimated_cost} onChange={(e) => setForm({ ...form, estimated_cost: Number(e.target.value) })} className="px-4 py-2 border rounded-lg" />
-            <select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value as MaintenanceStatus })} className="px-4 py-2 border rounded-lg">
+            <input type="number" placeholder="År" value={form.year} onChange={(e) => setForm({ ...form, year: Number(e.target.value) })} className="px-4 py-2 border rounded-[10px]" />
+            <input type="number" placeholder="Kostnad (kr)" value={form.estimated_cost} onChange={(e) => setForm({ ...form, estimated_cost: Number(e.target.value) })} className="px-4 py-2 border rounded-[10px]" />
+            <select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value as MaintenanceStatus })} className="px-4 py-2 border rounded-[10px]">
               {Object.entries(STATUS_CONFIG).map(([k, v]) => <option key={k} value={k}>{v.label}</option>)}
             </select>
           </div>
           {contractors.length > 0 && (
-            <select value={form.contractor_id} onChange={(e) => setForm({ ...form, contractor_id: e.target.value })} className="w-full px-4 py-2 border rounded-lg">
+            <select value={form.contractor_id} onChange={(e) => setForm({ ...form, contractor_id: e.target.value })} className="w-full px-4 py-2 border rounded-[10px]">
               <option value="">Ingen entreprenör vald</option>
               {contractors.map((c) => <option key={c.id} value={c.id}>{c.company_name}</option>)}
             </select>
           )}
-          <button type="submit" className="bg-[var(--color-forest)] text-white px-6 py-2 rounded-lg hover:bg-[var(--color-forest-light)] transition">Spara</button>
+          <button type="submit" className="bg-[var(--color-secondary)] text-white px-6 py-2 rounded-[10px] hover:brightness-110 transition">Spara</button>
         </form>
       )}
 
@@ -108,12 +108,12 @@ export default function MaintenancePage() {
               const sc = STATUS_CONFIG[item.status];
               const contractor = contractors.find((c) => c.id === item.contractor_id);
               return (
-                <div key={item.id} className="bg-white rounded-lg p-4 shadow-sm">
+                <div key={item.id} className="bg-white rounded-[10px] p-4 shadow-sm">
                   <div className="flex items-start justify-between">
                     <div>
                       <h3 className="font-medium">{item.title}</h3>
-                      <p className="text-sm text-gray-600 mt-1">{item.description}</p>
-                      <div className="flex items-center gap-3 mt-2 text-xs text-gray-500">
+                      <p className="text-sm text-[var(--color-on-surface-variant)] mt-1">{item.description}</p>
+                      <div className="flex items-center gap-3 mt-2 text-xs text-[var(--color-on-surface-variant)]">
                         {item.estimated_cost > 0 && <span>💰 {item.estimated_cost.toLocaleString("sv-SE")} kr</span>}
                         {contractor && <span>🔧 {contractor.company_name}</span>}
                       </div>

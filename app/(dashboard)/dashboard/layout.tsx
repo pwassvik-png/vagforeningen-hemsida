@@ -33,11 +33,11 @@ export default async function DashboardLayout({
     : null;
 
   return (
-    <div className="min-h-screen bg-[var(--color-sand)] flex">
+    <div className="min-h-screen bg-[var(--color-surface)] flex">
       <Sidebar role={member?.role || "medlem"} />
       <div className="flex-1 md:ml-64">
         <TopBar member={member} />
-        <main className="p-4 md:p-6 max-w-7xl">{children}</main>
+        <main className="p-4 sm:p-6 md:p-8 max-w-7xl pb-20 md:pb-8">{children}</main>
       </div>
     </div>
   );
